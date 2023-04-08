@@ -116,7 +116,47 @@ const ReactTable = () => {
 
   return (
     <>
-  <div className='container'>
+
+<div className="App">
+      <div className="container">
+        <table {...getTableProps()}>
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column, index) => (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()} >
+            { rows.map((row) =>{
+
+              prepareRow(row);
+              return(
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell)=>{
+                    <td {...cell.getCellProps()}> {cell.render("Cell")} </td>
+                  })}
+
+                </tr>
+              )
+            })
+
+            }
+          </tbody>
+
+
+</table>
+          </div>
+          </div>
+          </>
+  )
+}
+
+  {/* <div className='container'>
 
     <table {...getTableProps()} >
       <thead>
@@ -134,7 +174,7 @@ const ReactTable = () => {
     </table>
 
 
-  </div>
+  </div> */}
 
 
 
@@ -142,8 +182,6 @@ const ReactTable = () => {
 
 
       
-    </>
-  )
-}
+
 
 export default ReactTable
