@@ -38,45 +38,110 @@ const ReactTable = () => {
 
     const {getTableBodyProps, getTableProps, headerGroups,rows,prepareRow } = useTable({columns, data});
 
-    
-
-  return (
-    <>
-      <div className='grid min-h-screen grid-cols-3 p-16 bg-black'>
-        <div className='col-span-1'> 
-        &nbsp;
-        </div>
-        <div className='col-span-1 text-white border border-white-100'> 
-        <table>
+    const jamesTable = ()=>{
+      return(
+        <table className='text-white border normal border-white-100'>
+          
             <thead>
                 <tr>
                     <th>
-                        <td className='border border-t-0 border-l-0 border-white-100'>column1</td>
+                        <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>Cell</td>
                     </th>
                     <th>
-                        <td className='border border-t-0 border-l-0 border-white-100'>column2</td>
+                        <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>Cell</td>
                     </th>
+                    <th>
+                        <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>Cell</td>
+                    </th>
+                    <th>
+                        <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>Cell</td>
+                    </th>
+                    <th>
+                        <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>Cell</td>
+                    </th>
+                    <th>
+                        <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>Cell</td>
+                    </th>
+
+
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td className='border border-t-0 border-l-0 border-white-100'>
-                        Cell1
+                    <td className='border border-t-0 border-l-0 border-r-1 border-white-100'>
+                        Cell
                     </td>
-                    <td className='border border-t-0 border-l-0 border-white-100'>
-                        Cell2
+                    <td className='border border-t-0 border-r-0 border-l-1 border-white-100'>
+                      Cell
+                    </td>
+                    <td className='border border-t-0 border-r-0 border-l-1 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                </tr>
+                <tr>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
+                    </td>
+                    <td className='border border-t-0 border-white-100'>
+                        Cell
                     </td>
                 </tr>
             </tbody>
+            
         </table>
-        </div>
-        <div className='col-span-1'> 
-        &nbsp;
-        </div>
+      )
+    }
+    
+
+  return (
+    <>
+  <div className='container'>
+
+    <table {...getTableProps()} >
+      <thead>
+        {headerGroups.map((headerGroup) =>{
+          <tr {...headerGroup.getHeaderGroupProps()} > 
+        {headerGroup.headers.map((column)=>{
+         <th {...column.getHeaderProps()}>
+          {column.render("Header")}
+          </th>
+        })}
+          </tr>
+        })}
+      </thead>
+
+    </table>
+
+
+  </div>
 
 
 
-      </div>
+
+
+
+      
     </>
   )
 }
